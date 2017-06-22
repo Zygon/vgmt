@@ -1,0 +1,492 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <title>ezWasteMobile</title>
+		
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="css/screen-global.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-welcome.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-register.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-login.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-mainMenu.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-events.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-submitTask.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-submitEvent.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-fillingLevel.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-options.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-history.css" />
+		<link rel="stylesheet" type="text/css" href="css/screen-task-list.css" />
+		
+		<!-- Javascript -->
+<!--		<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB4ljREM-a2DFB39oUIe9LElHqEWkcU3e4&sensor=true"></script>-->
+                
+	    
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="ignitionthread.js"></script>
+        <!--<script type="text/javascript" src="js/cachecleaner.js"></script>-->
+		<script type="text/javascript" src="js/library/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="js/library/cpta-tapEvents.js"></script>
+        <script type="text/javascript" src="js/cpta-keyboarManager.js"></script>
+		<script type="text/javascript" src="js/cpta-localStorageManager.js"></script>
+		<script type="text/javascript" src="multiLanguageMessages/cpta-messagesManager.js"></script>
+		<script type="text/javascript" src="js/cpta-languagesManager.js"></script>
+		<script type="text/javascript" src="js/cpta-syncManager.js"></script>
+		<script type="text/javascript" src="js/cpta-licenseManager.js"></script>
+		<script type="text/javascript" src="js/cpta-usersManager.js"></script>
+		<script type="text/javascript" src="js/cpta-tripManager.js"></script>
+        <script type="text/javascript" src="js/cpta-eventsManager.js"></script>
+		<script type="text/javascript" src="js/cpta-tasksList.js"></script>
+		<!--<script type="text/javascript" src="js/cpta-cameraManager.js"></script>-->
+		<script type="text/javascript" src="js/cpta-networkManager.js"></script>
+		<script type="text/javascript" src="js/cpta-geolocationManager.js"></script>
+<!--        <script type="text/javascript" src="js/cpta-TrackingManager.js"></script>-->
+        <!--<script type="text/javascript" src="js/cpta-FileManager.js"></script>-->
+        <script type="text/javascript" src="js/cpta-Constants.js"></script>
+        <script type="text/javascript" src="js/cpta-screenManager.js"></script>
+        
+
+    </head>
+    
+    <body ontouchstart=""> 
+    <div id="updateScreen"></div>
+
+    	<!-- ##### LOAD ##### -->
+    	<div id="cpta-load" style="display: none">
+			<img id="cpta-load-img" src="img/mainMenu_banner.png">
+			<img id="cpta-load-loading" src="img/ajax-loader.gif">
+        </div>
+    
+    	<!-- ##### WELCOME SCREEN ##### -->
+		<div id="cpta-screen-welcome" class="cpta-screen">
+			<div id="cpta-screen-welcome-img"></div>
+			<p id="cpta-screen-welcome-link">www.ceb-solutions.com</p>
+			<img id="cpta-screen-welcome-bar" src="img/global_welcomeBar.jpg">
+			<img id="cpta-screen-loading" src="img/ajax-loader.gif">
+        </div>
+		
+		<div id="cpta-language-selection" style="display: none">
+			<div id="topBar-language-pt_PT" class="cpta-language-selection-opt width_h_0_1"></div>
+			<div id="topBar-language-pt_BR" class="cpta-language-selection-opt width_h_0_1"></div>
+			<div id="topBar-language-en_GB" class="cpta-language-selection-opt width_h_0_1"></div>
+			<div id="topBar-language-close" class="cpta-language-selection-opt width_h_0_1"></div>
+		</div>
+		
+		<div id="cpta-topBar" style="display: none">
+ 				<div id="topBar-currentLanguage" class="topBar-language-selection-opt width_h_0_1"></div>
+				<div id="topBar-gps" class="topBar-language-selection-opt width_h_0_1"></div>
+				<div id="topBar-network" class="topBar-language-selection-opt width_h_0_1"></div>
+				<div id="topBar-back" class="topBar-language-selection-opt width_h_0_1"></div>
+
+		</div>
+
+		<!-- ##### REGISTER SCREEN ##### -->
+		<div class="cpta-screen" id="cpta-screen-register" style="display: none" >
+			<form id="submitRegisterForm" name="submitRegisterForm">
+				<div id="cpta-screen-register-instructions"><p></p></div>
+				
+				<div id="cpta-screen-register-keyLabel"></div>
+				<div id="espaco-license"></div>
+				<div id="cpta-screen-register-keys">
+					<div id="cpta-screen-register-keys-col1" class="cpta-screen-register-keys-col"><input id="cpta-screen-register-key1" class="maxLength_number_4" type="number"/></div>
+					<div id="cpta-screen-register-keys-col2" class="cpta-screen-register-keys-col">-</div>
+					<div id="cpta-screen-register-keys-col3" class="cpta-screen-register-keys-col"><input id="cpta-screen-register-key2" class="maxLength_number_4" type="number"/></div>
+					<div id="cpta-screen-register-keys-col4" class="cpta-screen-register-keys-col">-</div>
+					<div id="cpta-screen-register-keys-col5" class="cpta-screen-register-keys-col"><input id="cpta-screen-register-key3" class="maxLength_number_4" type="number"/></div>
+				</div>
+				
+				<div id="cpta-screen-register-mobileIdLabel"></div>
+				<div id="cpta-screen-register-mobileIdLabel-text"></div>
+				
+				<div id="cpta-screen-register-softwareKeyLabel"></div>
+				<div id="cpta-screen-register-softwareKey-text"></div>
+				<div id="espaco-license"></div>
+				<div id="cpta-screen-register-buttonSubmit"><div id="cpta-screen-register-buttonSubmit-text">...</div></div>
+			</form>
+        </div>
+        
+		
+		<!-- ##### LOGIN SCREEN ##### -->
+        <div class="cpta-screen" id="cpta-screen-login" style="display: none">       
+			<form id="submitloginForm" name="submitLog inForm">
+               <div id="StartIgnicao">########## START ##########</div>
+                <div id="OffIgnicao">########## OFF ###########</div>
+				<div id="cpta-screen-login-topSpace"></div>
+				<div id="cpta-screen-login-numberLabel"></div>
+				<div id="cpta-screen-login-numberDiv">
+					<div id="cpta-screen-login-numberImg"></div>
+					<div id="cpta-screen-login-numberInput"><input id="cpta-screen-login-number" type="number"/></div>
+					<div id="cpta-screen-login-numberClear"></div>
+				</div>
+				<div id="cpta-screen-login-pinLabel"></div>
+				<div id="cpta-screen-login-pinDiv">
+					<div id="cpta-screen-login-pinImg"></div>
+					<div id="cpta-screen-login-pinInput"><input id="cpta-screen-login-pin" type="number"/></div>
+					<div id="cpta-screen-login-pinClear"></div>
+				</div>
+				<div id="cpta-screen-login-buttonSubmit"><div id="cpta-screen-login-buttonSubmit-text">...</div></div>
+				<div id="cpta-screen-login-text"></div>
+			</form>
+			<div id="cpta-screen-login-version"></div>
+		</div>
+
+		
+		<!-- ##### MAIN MENU SCREEN ##### -->
+		<div class="cpta-screen" id="cpta-screen-mainMenu" style="display: none">
+			 
+           
+		</div>
+        <div class="cpta-screen" id="cpta-screen-OpcoesPRecolha-rotas" style="display: none">
+           <div id="cpta-screen-OpcoesPRecolha-rotas-close"></div></div>
+        <div class="cpta-screen" id="cpta-screen-DefaultEvents" style="display: none"></div>
+		 <!-- ##### MENU ROTA PLANEADA ##### -->
+        <div class="cpta-screen" id="cpta-screen-PlannedRoutes" style="display: none; z-index:-1;position:fixed;">
+       
+        </div>
+
+        <div class='cpta-screen' id='cpta-screen-circuitos' style='display:none;z-index:9999;position:fixed;'></div>
+        
+        <div class='cpta-screen' id='cpta-screen-ConfirmStartEnd_Trip' style='display:none;z-index:9998;position:fixed;'>
+            <h2 class="titulocircuito"><div id="cpta-screen-Title">Deseja retomar a viagem</div></h2>
+            <h3 class="subtitulocircuito"><div id="cpta-screen-Nomerota">VARIAVEL NOME CIRCUITO</div></h3>
+            <div id="cpta-screen-ConfirmStartEnd-Trip-Yes" class="cpta-event-ConfirmStartEndAccept" style='z-index:9999'><div class="cpta-event-ConfirmStartEnd-Trip-Yes"><p></p></div></div></ br>
+            <div id="cpta-screen-ConfirmStartEnd-Trip-No" class="cpta-event-ConfirmStartEndAccept" style='z-index:9999'><div class="cpta-event-ConfirmStartEnd-Trip-No"><p></p></div></div></ br>
+        </div>
+
+        <div class='cpta-screen' id='cpta-screen-ConfirmPlanned_Trip' style='display:none;z-index:9998;position:fixed;'>
+            <h2 class="titulocircuito"><div id="cpta-screen-ConfirmPlanned-Title">Deseja iniciar a viagem</div></h2>
+            <h3 class="subtitulocircuito"><div id="cpta-screen-ConfirmPlanned-Nomerota">VARIAVEL NOME CIRCUITO</div></h3>
+            <div id="cpta-screen-ConfirmPlanned-Trip-Yes" class="cpta-event-ConfirmPlannedAccept" style='z-index:9999'><div class="cpta-event-ConfirmPlanned-Trip-Yes"><p></p></div></div></ br>
+            <div id="cpta-screen-ConfirmPlanned-Trip-No" class="cpta-event-ConfirmPlannedAccept" style='z-index:9999'><div class="cpta-event-ConfirmPlanned-Trip-No"><p></p></div></div></ br>
+        </div>
+
+        <!-- ##### MENU PONTOS DE RECOLHA ##### -->
+        <div class="cpta-screen" id="cpta-screen-PontosRecolha" style="display: none">
+
+             <div class="cpta-screen" id="cpta-screen-OpcoesPRecolha">
+           <div id="cpta-screen-OpcoesPRecolha-close"></div>
+             <div id="cmpta-screen-Precolha-opt1" class="cmpta-screen-Precolha-opt">
+                <div class="cpta-event-textDivMain">
+                    <p>aaa</p>
+                </div>
+            </div>
+            <div id="cmpta-screen-Precolha-opt2" class="cmpta-screen-Precolha-opt">
+                <div class="cpta-event-textDivMain">
+                    <p>bbb</p>
+                </div>
+            </div>
+            <div id="cpta-screen-Regist-optionSelect4" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-begin"><div class="cpta-event-textDivMain"><p> Inicio Viagem </p></div></div>
+            <div id="cpta-screen-Regist-optionSelect5" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-end"><div class="cpta-event-textDivMain"><p> Fim Viagem </p></div></div>
+            <div id="cpta-screen-Regist-optionSelect6" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-event"><div class="cpta-event-textDivMain"><p> Eventos </p></div></div>
+        </div>
+           
+        </div>
+       
+        <!-- ##### MENU MANUTENÇÕES ##### -->
+        <div class="cpta-screen" id="cpta-screen-Manutencao" style="display: none">
+            <p>Lista de Manutenções</p>
+        </div>
+        <!-- ##### MENU INTERNO ##### -->
+        <div class="cpta-screen" id="cpta-screen-OtherTrips" style="display: none" >
+	        <div id="cpta-screen-circuitos-close" class="cpta-screen-circuitos-optionselect" ></div>
+            <h1 class="tituloecran">Outras Viagens</h1>
+             <div id="cpta-screen-OtherTrips-opt" >
+                 <div id="cpta-screen-OtherTrips-opt-Workshop" class="cpta-screen-OtherTrips-optionSelect cpta-screen-Regist-oficina"><div class="cpta-event-textDivMain"><p> Oficina </p></div></div>
+                 <div id="cpta-screen-OtherTrips-opt-Interna" class="cpta-screen-OtherTrips-optionSelect cpta-screen-Regist-interna"><div class="cpta-event-textDivMain"><p> Interna </p></div></div>
+                 <div id="cpta-screen-OtherTrips-opt-Other" class="cpta-screen-OtherTrips-optionSelect cpta-screen-Regist-outras"><div class="cpta-event-textDivMain"><p> Outras </p></div></div>
+            </div>
+        </div>
+
+        <!-- ##### MENU CADASTRO ##### -->
+        <div class="cpta-screen" id="cpta-screen-Regist" style="display: none">
+            <div id="cpta-screen-Regist-close" class="cpta-screen-circuitos-optionselect"></div>
+               <div id="cpta-screen-Regist-opt4">
+                <div id="cpta-screen-Regist-opt4-title">
+                    <h1 class="tituloecran">Oficina / Interna / Outras</h1>
+                </div>
+                <div id="cpta-screen-Regist-optionSelect1" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-begin">
+                    <div class="cpta-event-textDivMain">
+                        <p>Inicio Viagem </p>
+                    </div>
+                </div>
+                <div id="cpta-screen-Regist-optionSelect2" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-end">
+                    <div class="cpta-event-textDivMain">
+                        <p>Fim Viagem </p>
+                    </div>
+                </div>
+                <div id="cpta-screen-Regist-optionSelect3" class="cpta-screen-Regist-optionSelect cpta-screen-Regist-event">
+                    <div class="cpta-event-textDivMain">
+                        <p>Eventos </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="cpta-screen" id="cpta-screen-VehicleEvents" style="display: none">
+            <p>Lista de Manutenções</p>
+        </div>
+		<!-- ##### RECOLHA DE RSU SCREEN ##### -->
+		
+		<div class="cpta-screen" id="cpta-screen-recolhaRSU" style="display: none">
+			<ul id="cpta-screen-recolhaRSU-events">
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-recolhaRSU-opt1"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-recolhaRSU-opt2"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-recolhaRSU-opt3"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-recolhaRSU-opt4"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-recolhaRSU-opt5"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-recolhaRSU-opt6"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-recolhaRSU-opt7"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-recolhaRSU-opt8"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-line" id="cpta-screen-recolhaRSU-opt9"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- ##### SERVIÇO LIMPEZA URBANA SCREEN ##### -->
+		<div class="cpta-screen" id="cpta-screen-limpezaUrbana" style="display: none">
+			<ul id="cpta-screen-limpezaUrbana-events">
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-limpezaUrbana-opt1"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-limpezaUrbana-opt2"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-limpezaUrbana-opt3"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-limpezaUrbana-opt4"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-limpezaUrbana-opt5"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-limpezaUrbana-opt6"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-limpezaUrbana-opt7"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-limpezaUrbana-opt8"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-limpezaUrbana-opt9"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-limpezaUrbana-opt10"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-line" id="cpta-screen-limpezaUrbana-opt11"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+			</ul>
+		</div>
+        
+        <!-- ##### SERVIÇO ECOPONTOS SCREEN ##### -->
+		
+		<div class="cpta-screen" id="cpta-screen-ecopontos" style="display: none">
+			<ul id="cpta-screen-ecopontos-events">
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-ecopontos-opt1"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-ecopontos-opt2"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-ecopontos-opt3"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-ecopontos-opt4"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-ecopontos-opt5"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-ecopontos-opt6"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-ecopontos-opt7"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-ecopontos-opt8"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+				<li class="cpta-screen-events-line">
+					<div class="cpta-screen-event cpta-screen-event-left" id="cpta-screen-ecopontos-opt9"><div class="cpta-event-textDiv"><p></p></div></div>
+					<div class="cpta-screen-event" id="cpta-screen-ecopontos-opt10"><div class="cpta-event-textDiv"><p></p></div></div>
+				</li>
+			</ul>
+		</div>
+        
+        <!-- ##### FILLING LEVEL SCREEN ##### -->
+        <div class="cpta-screen" id="cpta-screen-fillingLevel" style="display: none">
+        	<div id="cpta-screen-fillingLevel-title"></div>
+        	<table id="cpta-screen-fillingLevel-addTable">
+        		<tr>
+        			<td class="cpta-screen-fillingLevel-add" id="cpta-screen-fillingLevel-addGreen"></td>
+        			<td class="cpta-screen-fillingLevel-add" id="cpta-screen-fillingLevel-addBlue"></td>
+        			<td class="cpta-screen-fillingLevel-add" id="cpta-screen-fillingLevel-addYellow"></td>
+        			<td class="cpta-screen-fillingLevel-add" id="cpta-screen-fillingLevel-addRed"></td>
+        		</tr>
+        	</table>
+        	<div id="cpta-screen-fillingLevel-containers">
+        		<ul id="cpta-screen-fillingLevel-containers-list">
+        		</ul>
+        	</div>
+        	<div id="cpta-screen-fillingLevel-confirm"><div class="cpta-button-text" id="cpta-screen-fillingLevel-confirm-text">...</div></div>
+       		<div id="cpta-screen-fillingLevel-cancel"><div class="cpta-button-text" id="cpta-screen-fillingLevel-cancel-text">...</div></div>
+        </div>
+        
+        <!-- ##### SUBMIT EVENT SCREEN ##### -->
+       <!-- <div class="cpta-screen" id="cpta-screen-submitEvent" style="display: none">
+        	<div id="cpta-screen-submitEvent-title"><h1 class="tituloecran">MEDICOES</h1></div>
+            <div id="cpta-screen-submitEvent-confirm"><div class="cpta-button-text" id="cpta-screen-submitEvent-confirm-text">...</div></div>
+       		<div id="cpta-screen-submitEvent-cancel"><div class="cpta-button-text" id="cpta-screen-submitEvent-cancel-text">...</div></div>
+        	<div id="cpta-screen-submitEvent-description-title"></div>
+        	<div id="cpta-screen-submitEvent-description">
+        		<textarea id="cpta-screen-submitEvent-description-textArea"></textarea>
+        	</div>	    		
+        </div>-->
+        <div class="cpta-screen" id="cpta-screen-submitEvent" style="display: none">
+            <h1 class="tituloecran">Eventos</h1>
+            <div id="cpta-screen-submitEvent-description-title"></div>
+            <div id="cpta-screen-submitEvent-description">
+                <textarea id="cpta-screen-submitEvent-description-textArea"></textarea>
+            </div>
+            <div id="cpta-screen-submitEvent-confirm">
+                <div class="cpta-button-text" id="cpta-screen-submitEvent-confirm-text"></div>
+            </div>
+            <div id="cpta-screen-submitEvent-cancel">
+                <div class="cpta-button-text" id="cpta-screen-submitEvent-cancel-text"></div>
+            </div>
+        </div>
+
+<!--		<div class="cpta-screen" id="cpta-screen-submitEvent-showPicture" style="display: none">
+			<img id="cpta-screen-submitEvent-showPictureImg" src="">
+			<div id="cpta-screen-submitEvent-showPicture-confirm"><div class="cpta-button-text" id="cpta-screen-submitEvent-showPicture-confirm-text">...</div></div>
+       		<div id="cpta-screen-submitEvent-showPicture-cancel"><div class="cpta-button-text" id="cpta-screen-submitEvent-showPicture-cancel-text">...</div></div>
+		</div>-->
+
+        <div class="cpta-screen" id="cpta-screen-submitEvent-Obs" style="display: none"  >
+        	<h1 class="tituloecran">Observacoes</h1>
+        	<div id="cpta-screen-submitEvent-obs-description-title">Inserir detalhes</div>
+        	<div id="cpta-screen-submitEvent-description2">
+        		<textarea id="cpta-screen-submitEvent-obs-description-textArea"></textarea>
+        	</div>	
+        	     	
+            <div id="cpta-screen-submitEvent-obs-confirm"><div class="cpta-button-text" id="cpta-screen-submitEvent-obs-confirm-text"></div></div>
+       		<div id="cpta-screen-submitEvent-obs-cancel"><div class="cpta-button-text" id="cpta-screen-submitEvent-obs-cancel-text"></div></div>
+        </div>
+
+        
+        <!-- ##### OPTIONS SCREEN ##### -->
+       <div class="cpta-screen" id="cpta-screen-options" style="display: none" >
+        	<div id="cpta-screen-options-history-button"><div class="cpta-button-text" id="cpta-screen-options-history-button-text">...</div></div>
+			
+        	<div id="cpta-screen-options-language" >
+        		<div class="cpta-language-selection-opt" id="cpta-screen-options-language-pt_PT"></div>
+				<div class="cpta-language-selection-opt" id="cpta-screen-options-language-pt_BR"></div>
+				<div class="cpta-language-selection-opt" id="cpta-screen-options-language-en_GB"></div>
+        	</div>
+        	
+        	<div class="cpta-labelText" id="cpta-screen-options-licenseLabel"></div>
+		<div class="cpta-labelText" id="cpta-screen-options-mobileIdLabel"></div>
+        	<div id="cpta-screen-options-license"><div id="cpta-screen-options-license-text">...</div></div>
+        	<div id="cpta-screen-options-mobileId"><div id="cpta-screen-options-mobileId-text">...</div></div>
+        	
+        	<div class="cpta-labelText" id="cpta-screen-options-softwareKeyLabel"></div>
+		<div class="cpta-labelText" id="cpta-screen-options-versionLabel"></div>
+
+        	<div id="cpta-screen-options-softwareKey"><div id="cpta-screen-options-softwareKey-text">...</div></div>
+        	<div id="cpta-screen-options-version"><div id="cpta-screen-options-version-text">...</div></div>
+        	
+        	<!--<img id="cpta-screen-options-informationButton" src="img/global_buttonInformation.png">-->
+        </div>
+
+		
+		<!-- ##### ABOUT SCREEN ##### -->
+		<div class="cpta-screen" id="cpta-screen-about" style="display: none">
+			<div id="cpta-screen-about-text">
+				<img id="cpta-screen-about-logo" src="img/global_welcomeBar.jpg">
+				<div id="cpta-screen-about-description"></div>
+			</div>
+       		<div id="cpta-screen-about-close"><div class="cpta-button-text" id="cpta-screen-about-close-text">...</div></div>
+		</div>
+		
+		<!-- ##### HISTORY SCREEN ##### -->
+        <div class="cpta-screen" id="cpta-screen-history" style="display: none">
+			<div id="cpta-screen-history-dashboard">
+				<p id="cpta-screen-history-dashboard-title"></p>
+				<table id="cpta-screen-history-dashboard-table-lastSync">
+					<tr>
+						<td id="cpta-screen-history-dashboard-lastSync"></td><td id="cpta-screen-history-dashboard-lastSync-val"></td>
+					</tr>
+				</table>
+				<table id="cpta-screen-history-dashboard-table-count">
+					<tr>
+						<td id="cpta-screen-history-dashboard-type"></td><td id="cpta-screen-history-dashboard-delayedCount"></td>
+					</tr>
+					<tr>
+						<td id="cpta-screen-history-dashboard-type-events"></td><td id="cpta-screen-history-dashboard-type-events-val"></td>
+					</tr>
+					<tr>
+						<td id="cpta-screen-history-dashboard-type-pictures"></td><td id="cpta-screen-history-dashboard-type-pictures-val"></td>
+					</tr>
+				</table>
+				<div id="cpta-screen-history-refresh"><div id="cpta-screen-history-refresh-text">...</div></div>
+			</div>	
+			<div id="cpta-screen-history-events">	
+				<div id="cpta-screen-history-events-topTabel"></div>	
+				<div id="cpta-screen-history-events-div"></div>
+			</div>
+		</div>
+		<!-- ##### TASK LIST SCREEN ##### -->
+        <div class="cpta-screen" id="cpta-screen-task-list" style="display: none">
+            <div id="cpta-screen-task-list-title">Tarefas...</div>
+            <ul id="cpta-screen-task-list-tasks">
+            </ul>
+        </div>
+		<!-- ##### TASK SCREEN ##### w-->
+        <div class="cpta-screen" id="cpta-screen-task" style="display: none">
+            <div id="cpta-screen-task-title">
+                <img id="cpta-screen-task-title-preview" src="img/global_buttonPrevious.png">
+				<div id="cpta-screen-task-title-count">
+                    <div id="cpta-screen-task-title-count-value"></div>
+                </div>
+                <img id="cpta-screen-task-title-next" src="img/global_buttonNext.png">
+			</div>
+            <ul id="cpta-screen-task-ul">
+            </ul>
+            <div id="cpta-screen-task-options">
+                <div id="cpta-screen-task-options-list"><!-- ##### Tarefa Não Realizada ##### -->
+                    <div id="cpta-screen-task-options-list-text">...</div>
+                </div>
+                <div id="cpta-screen-task-options-Incomplete"> <!-- ##### tarefa incompleta ##### -->
+                    <div id="cpta-screen-task-options-Incomplete-text">...</div>
+                </div>
+                <div id="cpta-screen-task-options-complete"> <!-- ##### Tarefa completa ##### -->
+                    <div id="cpta-screen-task-options-complete-text">...</div>
+                </div>
+            </div>
+        </div>
+        <!-- ##### SUBMIT TASK SCREEN ##### -->
+        <div class="cpta-screen" id="cpta-screen-submitTask" style="display: none">
+            <div id="cpta-screen-submitTask-title"></div>
+            <div id="cpta-screen-submitTask-status-title"></div>
+            <div id="cpta-screen-submitTask-status">
+            </div>	
+            <div id="cpta-screen-submitTask-galery">
+                <div id="cpta-screen-submitTask-galery-thumbnail">
+                    <ul></ul>
+                </div>
+                <div id="cpta-screen-submitTask-galery-addPicture"></div>
+            </div>
+            <div id="cpta-screen-submitTask-confirm">
+                <div class="cpta-button-text" id="cpta-screen-submitTask-confirm-text">...</div>
+            </div>
+            <div id="cpta-screen-submitTask-cancel">
+                <div class="cpta-button-text" id="cpta-screen-submitTask-cancel-text">...</div>
+            </div>
+        </div>
+        <div class="cpta-screen" id="cpta-screen-submitTask-showPicture" style="display: none">
+            <img id="cpta-screen-submitTask-showPictureImg" src="">
+			<div id="cpta-screen-submitTask-showPicture-confirm">
+                <div class="cpta-button-text" id="cpta-screen-submitTask-showPicture-confirm-text">...</div>
+            </div>
+            <div id="cpta-screen-submitTask-showPicture-cancel">
+                <div class="cpta-button-text" id="cpta-screen-submitTask-showPicture-cancel-text">...</div>
+            </div>
+        </div>
+        
+    </body>
+</html>
